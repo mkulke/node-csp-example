@@ -5,5 +5,6 @@ An example employing Communicating Sequential Processes for scheduling asynchron
 
 ```
 ./generate_words.sh > words.txt
+tsc # Typescript compile
 cat words.txt | node index.js
 ```

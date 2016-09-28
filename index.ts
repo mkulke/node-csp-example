@@ -2,7 +2,7 @@
 
 const readline = require('readline');
 const csp = require('js-csp');
-const _ = require('lodash');
+import _ = require('lodash');
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -10,8 +10,8 @@ const rl = readline.createInterface({
 });
 
 // think rest call
-function asyncCall(line) {
-  return new Promise((resolve, reject) => {
+function asyncCall(line: string): Promise<string> {
+  return new Promise((resolve: (str: string) => void, reject) => {
     setTimeout(() => {
       const upper = _.toUpper(line);
       resolve(upper);
@@ -19,7 +19,7 @@ function asyncCall(line) {
   });
 }
 
-function* worker(number, work, results) {
+function* worker(number: number, work, results) {
   while (true) {
     const line = yield csp.take(work);
     // console.log(number + ' took a job');
