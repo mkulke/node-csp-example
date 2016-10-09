@@ -43,7 +43,9 @@ csp.go(function* () {
   const work = csp.chan();
   const results = csp.chan();
 
-  _.map(_.times(5), number => csp.go(worker, [number, work, results]));
+  for (let i = 0; i < 5; i++) {
+    csp.go(worker, [i, work, results]);
+  }
 
   rl.on('line', line => csp.putAsync(work, line));
 
